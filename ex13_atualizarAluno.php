@@ -12,7 +12,7 @@
 		$cep = $_POST['cep'];
 		$txt = $matricula.";".$nome.";".$email.";".$dtNasc.";".$cpf.";".$tel.";".$endereco.";".$cidade.";".$estado.";".$cep."\r\n";
 		file_put_contents('alunos.txt', $txt, FILE_APPEND);
-		header('location: a13_listarAlunos.php');
+		header('location: ex13_listarAlunos.php');
 	endif;
 	if(isset($_POST['buscar'])):
 		$arquivo = fopen('alunos.txt', 'r');
@@ -38,9 +38,9 @@
 		<title>Alterar Aluno</title>
 	</head>
 	<body>
-		<a href="a13_cadastroAlunoArquivo.php">Novo Aluno</a><br>
-		<a href="a13_buscarAluno.php">Alterar Aluno</a><br>
-		<a href="a13_listarAlunos.php">Listar Alunos</a>
+		<a href="ex13_cadastroAlunoArquivo.php">Novo Aluno</a><br>
+		<a href="ex13_buscarAluno.php">Alterar Aluno</a><br>
+		<a href="ex13_listarAlunos.php">Listar Alunos</a>
 		<h1>Atualizar Cadastro</h1>
 		<form method="POST" action="<?php echo $_SERVER['PHP_SELF'];?>">
 			Matrícula: <input type="text" name="matricula" value="<?php echo $resultado[0];?>"><br>
