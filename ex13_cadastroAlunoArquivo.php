@@ -25,9 +25,9 @@
 		<title>Cadastro</title>
 	</head>
 	<body>
-		<a href="a13_cadastroAlunoArquivo.php">Novo Aluno</a><br>
-		<a href="a13_buscarAluno.php">Alterar Aluno</a><br>
-		<a href="a13_listarAlunos.php">Listar Alunos</a>
+		<a href="ex13_cadastroAlunoArquivo.php">Novo Aluno</a><br>
+		<a href="ex13_buscarAluno.php">Alterar Aluno</a><br>
+		<a href="ex13_listarAlunos.php">Listar Alunos</a>
 		<h1>Novo Aluno</h1>
 		<form method="POST" action="<?php echo $_SERVER['PHP_SELF'];?>">
 			Matrícula: <input type="text" name="matricula"><br>
