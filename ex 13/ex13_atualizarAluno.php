@@ -39,7 +39,8 @@
 	</head>
 	<body>
 		<a href="ex13_cadastroAlunoArquivo.php">Novo Aluno</a><br>
-		<a href="ex13_buscarAluno.php">Alterar Aluno</a><br>
+		<a href="ex13_buscarAluno.php?del=">Alterar Aluno</a><br>
+		<a href="ex13_buscarAluno.php?del=1">Excluir Aluno</a><br>
 		<a href="ex13_listarAlunos.php">Listar Alunos</a>
 		<h1>Atualizar Cadastro</h1>
 		<form method="POST" action="<?php echo $_SERVER['PHP_SELF'];?>">
