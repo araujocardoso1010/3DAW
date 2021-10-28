@@ -6,7 +6,8 @@
 	</head>
 	<body>
 		<a href="ex13_cadastroAlunoArquivo.php">Novo Aluno</a><br>
-		<a href="ex13_buscarAluno.php">Alterar Aluno</a><br>
+		<a href="ex13_buscarAluno.php?del=">Alterar Aluno</a><br>
+		<a href="ex13_buscarAluno.php?del=1">Excluir Aluno</a><br>
 		<a href="ex13_listarAlunos.php">Listar Alunos</a>
 		<h1>Lista de Alunos</h1>
 		<table>
