@@ -38,6 +38,12 @@
 						foreach($colunas as $coluna){
 							echo "<td>$coluna</td>";
 						}
+						$urlname = "alterarPergunta.php?id=$colunas[0]";
+						echo "<td><a href=$urlname>Alterar</a></td>";
+						
+						$urlname = "excluirPergunta.php?id=$colunas[0]";
+						echo "<td><a href=$urlname>Excluir</a></td>";
+						
 						echo '</tr>';
 					}
 				}
