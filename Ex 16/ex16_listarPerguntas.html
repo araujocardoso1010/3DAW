@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="utf-8">
+		<title>EX16: Listar Perguntas</title>
+		<script>
+			function listar(){
+				let xmlHttp = new XMLHttpRequest();
+				
+				xmlHttp.onreadystatechange = function(){
+					if(this.readyState == 4 && this.status == 200){
+						let rJSON = JSON.parse(this.responseText);
+						for(i = 0; rJSON.length; i++){
+							let linha = rJSON[i];
+							criarLinhaTabela(linha);
+						}
+					}
+				}
+				
+				xmlHttp.open("GET", "http://localhost/3DAW/ex16_listarPerguntas.php");
+				xmlHttp.send();
+			}
+			function criarLinhaTabela(linha){
+				let tr = window.document.createElement('tr');
+				let td = window.document.createElement('td');
+				let textnode = window.document.createTextNode(linha.id+" ");
+				td.appendChild(textnode);
+				tr.appendChild(td);
+				
+				textnode = window.document.createTextNode(linha.pergunta+" ");
+				td.appendChild(textnode);
+				tr.appendChild(td);
+				
+				textnode = window.document.createTextNode(linha.dificuldade+" ");
+				td.appendChild(textnode);
+				tr.appendChild(td);
+				
+				textnode = window.document.createTextNode(linha.pontos+" ");
+				td.appendChild(textnode);
+				tr.appendChild(td);
+				
+				let tr_fim = window.document.getElementById("ultimaLinha");
+				tr_fim.parentNode.insertBefore(tr, tr_fim);
+			}
+		</script>
+	</head>
+	<body onload="listar()">
+		<a href="ex16_novaPergunta.html">Nova Pergunta</a><br>
+		<a href="ex16_listarPerguntas.html">Listar Perguntas</a><br>
+		<a href="ex16_pesquisarPergunta.html">Perquisar Pergunta</a><br>
+		<h1>Listar Perguntas</h1>
+		<table>
+			<tr id="ultimaLinha">
+				<td></td>
+			</tr>
+		</table>
+	</body>
+</html>
