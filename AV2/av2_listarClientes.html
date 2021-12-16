@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="utf-8">
+		<title>Listar Clientes</title>
+		<script>
+			function listar(){
+				xmlHttp = new XMLHttpRequest();
+				xmlHttp.onreadystatechange = function(){
+					if(this.readyState == 4 && this.status == 200){
+						let rJSON = JSON.parse(this.responseText);
+						for(i = 0; rJSON.length; i++){
+							criarLinhaTabela(rJSON[i]);
+						}
+					}
+				}
+				xmlHttp.open("GET", "av2_listarClientes.php");
+				xmlHttp.send();
+			}
+			function criarLinhaTabela(rJSON){
+				let tr = document.createElement("tr");
+				let td = document.createElement("td");
+				let texto = document.createTextNode(rJSON.id+" ");
+				td.appendChild(texto);
+				tr.appendChild(td);
+
+				texto = document.createTextNode(rJSON.nome+" ");
+				td.appendChild(texto);
+				tr.appendChild(td);
+				
+				texto = document.createTextNode(rJSON.address+" ");
+				td.appendChild(texto);
+				tr.appendChild(td);
+
+				texto = document.createTextNode(rJSON.postalcode+" ");
+				td.appendChild(texto);
+				tr.appendChild(td);
+				
+				texto = document.createTextNode(rJSON.pais+" ");
+				td.appendChild(texto);
+				tr.appendChild(td);
+				
+				texto = document.createTextNode(rJSON.cpf+" ");
+				td.appendChild(texto);
+				tr.appendChild(td);
+				
+				texto = document.createTextNode(rJSON.passaporte+" ");
+				td.appendChild(texto);
+				tr.appendChild(td);
+				
+				texto = document.createTextNode(rJSON.email+" ");
+				td.appendChild(texto);
+				tr.appendChild(td);
+				
+				texto = document.createTextNode(rJSON.nascimento+" ");
+				td.appendChild(texto);
+				tr.appendChild(td);
+				
+				let trFim = document.getElementById("ultimaLinha");
+				
+				trFim.parentNode.insertBefore(tr, trFim);
+			}
+		</script>
+	</head>
+	<body onload="listar()">
+		<a href="av2_incluirCliente.html">Incluir Cliente</a><br>
+		<a href="av2_listarClientes.html">Listar Clientes</a><br>
+		<a href="av2_alterarClientes.html">Alterar Cliente</a><br>
+		<h1>Listar Clientes</h1>
+		<table>
+			<tr id="ultimaLinha">
+				<td></td>
+			</tr>
+		</table>
+	</body>
+</html>

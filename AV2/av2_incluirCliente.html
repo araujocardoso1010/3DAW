@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="utf-8">
+		<title>Incluir Cliente</title>
+		<script>
+			function validar(nome, address, postalcode, pais, cpf, passaporte, email, nascimento){
+				if(nome == ""){
+					return false;
+				}
+				if(address == ""){
+					return false;
+				}
+				if(postalcode == ""){
+					return false;
+				}
+				if(pais == ""){
+					return false;
+				}
+				if(cpf == ""){
+					return false;
+				}
+				if(passaporte == ""){
+					return false;
+				}
+				if(email == ""){
+					return false;
+				}
+				if(nascimento == ""){
+					return false;
+				}
+				return true;
+			}
+			function enviar(){
+				let nome = document.getElementById('nome').value;
+				let address = document.getElementById('address').value;
+				let postalcode = document.getElementById('postalcode').value;
+				let pais = document.getElementById('pais').value;
+				let cpf = document.getElementById('cpf').value;
+				let passaporte = document.getElementById('passaporte').value;
+				let email = document.getElementById('email').value;
+				let nascimento = document.getElementById('nascimento').value;
+				
+				let r = validar(nome, address, postalcode, pais, cpf, passaporte, email, nascimento);
+				if(r){
+					let xmlHttp = new XMLHttpRequest();
+					xmlHttp.onreadystatechange = function(){
+						if(this.readyState == 4 && this.status == 200){
+							document.getElementById('msg').innerHTML = this.responseText;
+						}
+					}
+					
+					xmlHttp.open("GET", "http://localhost/av2_incluirCliente.php?nome="+nome+"&address="+address+"&postalcode="+postalcode+
+						"&pais="+pais+"&cpf="+cpf+"&passaporte="+passaporte+"&email="+email+"&nascimento="+nascimento);
+					xmlHttp.send();
+				} else{
+					document.getElementById('msg').innerHTML = "Preencha todos os campos";
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<a href="av2_incluirCliente.html">Incluir Cliente</a><br>
+		<a href="av2_listarClientes.html">Listar Clientes</a><br>
+		<a href="av2_alterarClientes.html">Alterar Cliente</a><br>
+		<h1>Incluir Cliente</h1>
+		<form method="GET">
+			Nome: <input type="text" id="nome"><br><br>
+			Endereço: <input type="text" id="address"><br><br>
+			PostalCode: <input type="text" id="postalcode"><br><br>
+			País: <input type="text" id="pais"><br><br>
+			CPF: <input type="text" id="cpf"><br><br>
+			Passaporte: <input type="text" id="passaporte"><br><br>
+			Email: <input type="text" id="email"><br><br>
+			Nascimento: <input type="text" id="nascimento"><br><br>
+			<input type="button" value="Incluir" onclick="enviar()">
+		</form>
+		<br>
+		<p id="msg"></p>
+	</body>
+</html>
