@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="utf-8">
+		<title>EX16: Nova Pergunta</title>
+		<script>
+			function enviar(){
+				let pergunta = window.document.getElementById('pergunta').value;
+				let pontos = window.document.getElementById('pontos').value;
+				let dificuldade = window.document.getElementById('dificuldade').value;
+				let xmlHttp = new XMLHttpRequest();
+				
+				xmlHttp.onreadystatechange = function(){
+					if(this.readyState == 4 && this.status == 200){
+						window.document.getElementById('msg').innerHTML = this.responseText;
+					}
+				}
+				
+				xmlHttp.open("GET", "http://localhost/3DAW/ex16_novaPergunta.php?pergunta="+pergunta+"&pontos="+pontos+"&dificuldade="+dificuldade);
+				xmlHttp.send();
+			}
+		</script>
+	</head>
+	<body>
+		<a href="ex16_novaPergunta.html">Nova Pergunta</a><br>
+		<a href="ex16_listarPerguntas.html">Listar Perguntas</a><br>
+		<a href="ex16_pesquisarPergunta.html">Perquisar Pergunta</a><br>
+		<h1>Nova Pergunta</h1>
+		<form method="GET" id="formPergunta">
+			Pergunta: <input type="text" id="pergunta"><br><br>
+			Pontos: <input type="text" id="pontos" placeholder="1 a 100"><br><br>
+			Dificuldade: <input type="text" id="dificuldade"><br><br>
+			<button type="button" id="novaPergunta" onclick="enviar()">Criar Pergunta</button>
+		</form>
+		<br>
+		<p id="msg"></p>
+	</body>
+</html>
